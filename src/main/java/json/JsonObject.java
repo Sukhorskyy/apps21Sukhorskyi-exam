@@ -22,8 +22,8 @@ public class JsonObject extends Json {
         }
         String json = "{";
         for (Map.Entry<String, Json> entry : information.entrySet()) {
-            json += "'" + entry.getKey() + "'" + ": " +
-                    entry.getValue().toJson() + ", ";
+            json += "'" + entry.getKey() + "'" + ": "
+                    + entry.getValue().toJson() + ", ";
         }
         return json.substring(0, json.length()-2) + "}";
     }

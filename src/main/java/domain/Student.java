@@ -29,7 +29,7 @@ public class Student extends BasicStudent {
         this.name = name;
         this.surname = surname;
         this.year = year;
-        int MINMARK = 3;
+        final int MINMARK = 3;
         for (Tuple<String, Integer> exam : exams) {
             Boolean bool = true;
             if (exam.getValue() < MINMARK) {

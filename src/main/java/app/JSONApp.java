@@ -18,9 +18,10 @@ public class JSONApp {
         Json jYear = new JsonNumber(2);
         print(jYear); // 2
 
-        int MARK1 = 3;
-        int MARK2 = 4;
-        Json jMarks = new JsonArray(new JsonNumber(MARK1), new JsonNumber(MARK2));
+        final int THREE = 3;
+        final int FOUR = 4;
+        Json jMarks = new JsonArray(new JsonNumber(THREE),
+                new JsonNumber(FOUR));
         print(jMarks); // [3, 4]
 
         JsonPair name = new JsonPair("name", new JsonString("Andrii"));
@@ -45,9 +46,9 @@ public class JSONApp {
     }
 
     public static JsonObject sessionResult() {
-        int OOP = 3;
-        int ENGLISH = 5;
-        int MATH = 2;
+        final int OOP = 3;
+        final int ENGLISH = 5;
+        final int MATH = 2;
         return new Student("Andrii", "Rodionov", 2,
                 new Tuple<>("OOP", OOP),
                 new Tuple<>("English", ENGLISH),
