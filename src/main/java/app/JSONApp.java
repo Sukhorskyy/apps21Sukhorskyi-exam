@@ -1,7 +1,14 @@
 package app;
 
-import domain.*;
-import json.*;
+import domain.BasicStudent;
+import domain.Student;
+import json.Json;
+import json.JsonArray;
+import json.JsonNumber;
+import json.JsonPair;
+import json.JsonObject;
+import json.JsonString;
+import json.Tuple;
 
 /**
  * Created by Andrii_Rodionov on 1/3/2017.
@@ -11,7 +18,9 @@ public class JSONApp {
         Json jYear = new JsonNumber(2);
         print(jYear); // 2
 
-        Json jMarks = new JsonArray(new JsonNumber(3), new JsonNumber(4));
+        int MARK1 = 3;
+        int MARK2 = 4;
+        Json jMarks = new JsonArray(new JsonNumber(MARK1), new JsonNumber(MARK2));
         print(jMarks); // [3, 4]
 
         JsonPair name = new JsonPair("name", new JsonString("Andrii"));
@@ -19,12 +28,15 @@ public class JSONApp {
         JsonPair marks = new JsonPair("marks", jMarks);
         JsonPair year = new JsonPair("year", jYear);
         JsonObject jsonObj = new JsonObject(name, surname, year, marks);
-        print(jsonObj); // {'name': 'Andrii', 'surname': 'Rodionov', 'year': 2, 'marks': [3, 4]}
+        print(jsonObj);
+        // {'name': 'Andrii', 'surname': 'Rodionov', 'year': 2, 'marks': [3, 4]}
 
-        print(jsonObj.projection("surname", "age", "year", "marks")); // {'surname': 'Rodionov', 'year': 2, 'marks': [3, 4]}
+        print(jsonObj.projection("surname", "age", "year", "marks"));
+        // {'surname': 'Rodionov', 'year': 2, 'marks': [3, 4]}
 
         BasicStudent basicStudent = new BasicStudent("Andrii", "Rodionov", 2);
-        print(basicStudent.toJsonObject()); // {'name': 'Andrii', 'surname': 'Rodionov', 'year': 2}
+        print(basicStudent.toJsonObject());
+        // {'name': 'Andrii', 'surname': 'Rodionov', 'year': 2}
         print(sessionResult());
     }
 
@@ -33,9 +45,12 @@ public class JSONApp {
     }
 
     public static JsonObject sessionResult() {
+        int OOP = 3;
+        int ENGLISH = 5;
+        int MATH = 2;
         return new Student("Andrii", "Rodionov", 2,
-                new Tuple<>("OOP", 3),
-                new Tuple<>("English", 5),
-                new Tuple<>("Math", 2)).toJsonObject();
+                new Tuple<>("OOP", OOP),
+                new Tuple<>("English", ENGLISH),
+                new Tuple<>("Math", MATH)).toJsonObject();
     }
 }

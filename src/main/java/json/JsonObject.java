@@ -10,22 +10,26 @@ public class JsonObject extends Json {
     private Map<String, Json> information = new LinkedHashMap<>();
 
     public JsonObject(JsonPair... jsonPairs) {
-        for (JsonPair jsp: jsonPairs)
-            information.put(jsp.key, jsp.value);
+        for (JsonPair jsp: jsonPairs) {
+            information.put(jsp.getKey(), jsp.getValue());
+        }
     }
 
     @Override
     public String toJson() {
-        if (information.size() == 0)
+        if (information.size() == 0) {
             return "{}";
+        }
         String json = "{";
-        for (Map.Entry<String, Json> entry : information.entrySet())
-            json += "'" + entry.getKey() + "'" + ": " + entry.getValue().toJson() + ", ";
+        for (Map.Entry<String, Json> entry : information.entrySet()) {
+            json += "'" + entry.getKey() + "'" + ": " +
+                    entry.getValue().toJson() + ", ";
+        }
         return json.substring(0, json.length()-2) + "}";
     }
 
     public void add(JsonPair jsonPair) {
-        information.put(jsonPair.key, jsonPair.value);
+        information.put(jsonPair.getKey(), jsonPair.getValue());
     }
 
     public Json find(String name) {
@@ -34,9 +38,11 @@ public class JsonObject extends Json {
 
     public JsonObject projection(String... names) {
         JsonObject jsonObject = new JsonObject();
-        for (String name: names)
-            if (information.containsKey(name))
+        for (String name: names) {
+            if (information.containsKey(name)) {
                 jsonObject.add(new JsonPair(name, information.get(name)));
+            }
+        }
         return jsonObject;
     }
 }
