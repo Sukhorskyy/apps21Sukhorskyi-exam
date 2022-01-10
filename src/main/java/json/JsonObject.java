@@ -22,7 +22,7 @@ public class JsonObject extends Json {
         }
         String json = "{";
         for (Map.Entry<String, Json> entry : information.entrySet()) {
-            json.concat("'")
+            json = json.concat("'")
                     .concat(entry.getKey())
                     .concat("'").concat(": ")
                     .concat(entry.getValue().toJson())
